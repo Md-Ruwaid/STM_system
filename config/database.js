@@ -1,13 +1,21 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv"
+import dotenv from "dotenv";
+dotenv.config();
 
 async function connectDB() {
     try {
-        const db_uri = process.env.MONGO_URI;
-        await mongoose.connect(db_uri)
+        const dbUri = process.env.MONGO_URI;
+
+        if (!dbUri) {
+            console.warn("MONGO_URI is not defined. Skipping database connection.");
+            return;
+        }
+
+        await mongoose.connect(dbUri);
+        console.log("MongoDB connected successfully!!");
     } catch (error) {
-        console.log("NOt working lala")
+        console.error(error.message);
     }
 }
 
-connectDB()
+connectDB();

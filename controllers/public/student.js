@@ -1,7 +1,7 @@
 import express from "express";
-import studentModel from "../../model/Student.js";
+import studentModel from "../../models/Student.js";
 import bcrypt from "bcrypt";
-import tokenize from "../../utils/token.js";
+import tokenize from "../../utills/tokens.js";
 
 const router = express.Router();
 
